@@ -350,3 +350,6 @@ function myInstanceOf (left, right) {
 在`Vue`中通过观察者模式触发视图更新。`Vue2.x`通过`Object.defineProperty`劫持`data`数据，当数据变化后触发`setter`，`setter`内部通过订阅器来`notify`消息，`notify`会调用`watcher`更新视图
 
 当一套前端对接不同后端服务时，会出现数据解构不一致的情况，这个时候可以使用适配器模式来兼容不同后端，使他们以统一的数据解构来对接前端
+
+### 22.其他
+[冴羽blog](https://github.com/mqyqingfeng/Blog)
