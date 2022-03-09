@@ -9,12 +9,12 @@ function cloneDeep(obj, hash = new WeakMap()) {
   if (obj instanceof Date) return new Date(obj);
   if (obj instanceof RegExp) return new RegExp(obj);
   // 可能是对象或者其他普通的值，如果是函数不需要深拷贝
-  if (typeof obj !== 'object') return obj;
   // 是对象就进行深拷贝
+  if (typeof obj !== 'object') return obj;
   if (hash.get(obj)) return hash.get(obj);
 
   // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
-  let cloneObj = obj.constructor();
+  let cloneObj = new obj.constructor();
   hash.set(obj, cloneObj);
   for (let key in obj) {
     if (key in obj) {
