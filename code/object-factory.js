@@ -3,8 +3,8 @@
  * --语法--
  * new constructor[([arguments])]
  * --参数--
- * constructor -一个指定对象实例的类型的类或函数。
- * arguments -一个用于被 constructor 调用的参数列表。
+ * constructor 一个指定对象实例的类型的类或函数。
+ * arguments 一个用于被 constructor 调用的参数列表。
  * --操作流程--
  * 1、创建一个空的简单的JavaScript对象（既{}）
  * 2、为步骤1新创建的对象添加属性__proto__，将该属性链接至构造函数的原型对象
