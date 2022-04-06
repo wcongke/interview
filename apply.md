@@ -51,7 +51,7 @@ var max = Math.max.apply(null, numbers); /* 基本等同于 Math.max(numbers[0],
 var min = Math.min.apply(null, numbers);
 ```
 
-## 使用apply来链接构造器
+## 使用`apply`来链接构造器
 
 你可以使用`apply`来链接一个对象构造器 (en-US)，类似于Java。在接下来的例子中我们会创建一个全局`Function`对象的`construct`方法 ，来使你能够在构造器中使用一个类数组对象而非参数列表。
 
