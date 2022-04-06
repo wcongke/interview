@@ -1,4 +1,5 @@
 # Function.prototype.apply()
+<a href='https://github.com/mqyqingfeng/Blog/issues/11'>JavaScript深入之apply的模拟实现</a>
 
 ## 语法
 ```js
