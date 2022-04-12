@@ -90,7 +90,7 @@ function display() {
 
 ## `call`的模拟实现
 ```js
-Function.prototype.call = function (context) {
+Function.prototype.call2 = function (context) {
   var context = context || window;
   context.fn = this;
 

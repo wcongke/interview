@@ -66,7 +66,7 @@ Function.prototype.construct = function(aArgs) {
 
 ## `apply`的模拟实现
 ```js
-Function.prototype.apply = function(context, arr) {
+Function.prototype.apply2 = function(context, arr) {
   var context = Object(context) || window;
   context.fn = this;
 
