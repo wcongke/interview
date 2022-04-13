@@ -20,11 +20,11 @@
     /**
      * 防抖: n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时
      * @function Debounce 防抖
-     * @param {Function} fn -执行方法
+     * @param {Function} func -执行方法
      * @param {Number} wait -等待时间
      * @param {Boolean} immediate -是否立即执行
      */
-    function debounce(fn, wait, immediate) {
+    function debounce(func, wait, immediate) {
       let timeout, result;
 
       var debounced = function() {
@@ -39,10 +39,10 @@
           timeout = setTimeout(function() {
             timeout = null;
           }, wait);
-          if (callNow) result = fn.apply(context, args);
+          if (callNow) result = func.apply(context, args);
         } else {
           timeout = setTimeout(function() {
-            fn.apply(context, args);
+            func.apply(context, args);
           }, wait);
         }
 

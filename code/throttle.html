@@ -1,0 +1,76 @@
+<html>
+  <style>
+    #container {
+      width: 50%;
+      height: 10vh;
+      line-height: 10vh;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <div id="container"></div>
+    <button id="btn">取消节流</button>
+  </body>
+  <script>
+    /**
+     * 节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
+     * @function 节流
+     * @param {Function} func -执行方法
+     * @param {Number} wait -间隔时间
+     */
+    function throttle(func, wait) {
+      var timeout, context, args, result;
+      var previous = 0;
+
+      var later = function() {
+        previous = +new Date();
+        timeout = null;
+        func.apply(context, args);
+      };
+
+      var throttled = function() {
+        var now = +new Date();
+        //下次触发 func 剩余的时间
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+        // 如果没有剩余的时间了或者你改了系统时间
+        if (remaining <= 0 || remaining > wait) {
+          if (timeout) {
+            clearTimeout(timeout);
+            timeout = null;
+          }
+          previous = now;
+          func.apply(context, args);
+        } else if (!timeout) {
+          timeout = setTimeout(later, remaining);
+        }
+      };
+      throttled.cancel = function() {
+        clearTimeout(timeout);
+        previous = 0;
+        timeout = null;
+      }
+
+      return throttled;
+    }
+
+    var count = 1;
+
+    function getUserAction() {
+      document.getElementById('container').innerHTML = count++;
+    }
+
+    var setUserAction = throttle(getUserAction, 3000);
+
+    document.getElementById('container').onmousemove = setUserAction;
+    document.getElementById('btn').addEventListener('click', function() {
+      setUserAction.cancel();
+    })
+  </script>
+</html>
