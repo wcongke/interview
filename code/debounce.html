@@ -1,0 +1,73 @@
+<html>
+  <style>
+    #container {
+      width: 50%;
+      height: 10vh;
+      line-height: 10vh;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <div id="container"></div>
+    <button id="btn">取消防抖</button>
+  </body>
+  <script>
+    /**
+     * 防抖: n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时
+     * @function Debounce 防抖
+     * @param {Function} fn -执行方法
+     * @param {Number} wait -等待时间
+     * @param {Boolean} immediate -是否立即执行
+     */
+    function debounce(fn, wait, immediate) {
+      let timeout, result;
+
+      var debounced = function() {
+        let context = this;
+        let args = arguments;
+
+        // timeout 不能为null
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+          // 第一次会立即执行，以后只有事件执行后才会再次触发
+          let callNow = !timeout;
+          timeout = setTimeout(function() {
+            timeout = null;
+          }, wait);
+          if (callNow) result = fn.apply(context, args);
+        } else {
+          timeout = setTimeout(function() {
+            fn.apply(context, args);
+          }, wait);
+        }
+
+        return result;
+      }
+
+      debounced.cancel = function() {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+
+      return debounced;
+    }
+
+    var count = 1;
+
+    function getUserAction() {
+      document.getElementById('container').innerHTML = count++;
+    }
+
+    var setUserAction = debounce(getUserAction, 1000, true);
+
+    document.getElementById('container').onmousemove = setUserAction;
+    document.getElementById('btn').addEventListener('click', function() {
+      setUserAction.cancel();
+    })
+  </script>
+</html>
