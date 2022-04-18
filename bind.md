@@ -110,4 +110,3 @@ Function.prototype.bind2 = function(context) {
   return fBound;
 }
 ```
-.
