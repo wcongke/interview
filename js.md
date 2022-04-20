@@ -197,7 +197,7 @@ var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, n
 
 
 ### 9.addEventListener函数的第三个参数
-第三个参数涉及到冒泡和获取，是`true`时为获取，是`false`时为冒泡
+第三个参数涉及到冒泡和捕获，是`true`时为捕获，是`false`时为冒泡
 或者是一个对象`{passive: true}`，针对的是Safari浏览器，禁止/开启使用滚动时用到。
 
 ### 10.原生自定义事件
