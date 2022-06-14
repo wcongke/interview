@@ -23,4 +23,6 @@ function bubbleSort(array) {
 
     if (flag) break;
   }
+
+  return array;
 }
